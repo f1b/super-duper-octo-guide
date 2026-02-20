@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2048 / Калькулятор</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="app" aria-live="polite">
+      <section id="game-view" class="panel" aria-label="Игра 2048">
+        <header class="panel-header">
+          <h1>2048</h1>
+          <button id="new-game-btn" class="ghost-btn" type="button">Новая игра</button>
+        </header>
+
+        <div class="scoreboard">
+          <article class="score-card">
+            <span>Счёт</span>
+            <strong id="score-value">0</strong>
+          </article>
+          <article class="score-card">
+            <span>Лучший</span>
+            <strong id="best-score-value">0</strong>
+          </article>
+        </div>
+
+        <div class="board-wrap">
+          <div id="grid" class="grid" role="grid" aria-label="Игровое поле 4 на 4"></div>
+          <p id="game-message" class="game-message hidden">Ходов больше нет. Нажмите «Новая игра».</p>
+        </div>
+
+        <div class="controls" aria-label="Кнопки управления">
+          <button type="button" class="control-btn" data-direction="up">↑</button>
+          <div class="control-row">
+            <button type="button" class="control-btn" data-direction="left">←</button>
+            <button type="button" class="control-btn" data-direction="down">↓</button>
+            <button type="button" class="control-btn" data-direction="right">→</button>
+          </div>
+        </div>
+
+        <p class="hint">Секрет: нажмите 5 раз подряд на 2-ю ячейку 2-го ряда.</p>
+      </section>
+
+      <section id="calculator-view" class="panel hidden" aria-label="Скрытый калькулятор">
+        <header class="panel-header">
+          <h2>Калькулятор</h2>
+          <button id="back-to-game-btn" class="return-btn" type="button">Вернуться к игре</button>
+        </header>
+
+        <output id="calc-display" class="calc-display">0</output>
+        <div id="calc-buttons" class="calc-grid" aria-label="Кнопки калькулятора"></div>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>

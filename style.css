@@ -1,0 +1,244 @@
+:root {
+  --bg: #f4efe7;
+  --panel: #f8f5ef;
+  --grid-bg: #b8ab9d;
+  --tile-empty: #d2c6b8;
+  --text-primary: #54473f;
+  --text-soft: #7a6d62;
+  --accent: #8f7f70;
+  --shadow: 0 20px 40px rgba(84, 71, 63, 0.12);
+  --radius-lg: 24px;
+  --radius-md: 14px;
+  --radius-sm: 10px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: 'Manrope', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  color: var(--text-primary);
+  background: radial-gradient(circle at top, #fff8ec 0%, var(--bg) 55%);
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+.app {
+  width: min(100%, 520px);
+}
+
+.panel {
+  background: var(--panel);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(84, 71, 63, 0.08);
+}
+
+.panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+h1,
+h2 {
+  margin: 0;
+  font-size: clamp(1.75rem, 3vw, 2.4rem);
+}
+
+.ghost-btn,
+.return-btn,
+.control-btn {
+  border: none;
+  border-radius: var(--radius-sm);
+  background: #ddd1c4;
+  color: var(--text-primary);
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.12s ease, filter 0.12s ease;
+}
+
+.ghost-btn,
+.return-btn {
+  padding: 10px 14px;
+}
+
+.return-btn {
+  background: #cf8f7f;
+  color: #fff;
+}
+
+.ghost-btn:hover,
+.return-btn:hover,
+.control-btn:hover {
+  filter: brightness(1.05);
+  transform: translateY(-1px);
+}
+
+.scoreboard {
+  margin-top: 18px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.score-card {
+  background: #d9cec1;
+  border-radius: var(--radius-md);
+  padding: 10px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.score-card span {
+  font-size: 0.76rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-soft);
+}
+
+.score-card strong {
+  font-size: 1.35rem;
+}
+
+.board-wrap {
+  margin-top: 14px;
+  position: relative;
+}
+
+.grid {
+  background: var(--grid-bg);
+  border-radius: 18px;
+  padding: 10px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  touch-action: none;
+}
+
+.tile {
+  aspect-ratio: 1;
+  border-radius: var(--radius-sm);
+  background: var(--tile-empty);
+  display: grid;
+  place-items: center;
+  font-weight: 800;
+  font-size: clamp(1.1rem, 4vw, 1.7rem);
+  color: #65594f;
+  user-select: none;
+}
+
+.tile[data-value='0'] {
+  color: transparent;
+}
+
+.tile[data-value='2'] { background: #efe5d7; }
+.tile[data-value='4'] { background: #e9dcc8; }
+.tile[data-value='8'] { background: #e8bc8b; color: #fff; }
+.tile[data-value='16'] { background: #e7a978; color: #fff; }
+.tile[data-value='32'] { background: #dc875f; color: #fff; }
+.tile[data-value='64'] { background: #c86f4f; color: #fff; }
+.tile[data-value='128'] { background: #d3c77d; color: #fff; }
+.tile[data-value='256'] { background: #cab76a; color: #fff; }
+.tile[data-value='512'] { background: #bb9f52; color: #fff; }
+.tile[data-value='1024'] { background: #a88844; color: #fff; font-size: clamp(0.95rem, 3vw, 1.2rem); }
+.tile[data-value='2048'] { background: #8f6b33; color: #fff; font-size: clamp(0.95rem, 3vw, 1.2rem); }
+
+.game-message {
+  position: absolute;
+  inset: 10px;
+  margin: 0;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  border-radius: 14px;
+  background: rgba(244, 239, 231, 0.82);
+  font-weight: 700;
+  backdrop-filter: blur(2px);
+}
+
+.controls {
+  margin-top: 14px;
+  display: grid;
+  justify-items: center;
+  gap: 10px;
+}
+
+.control-row {
+  display: grid;
+  grid-template-columns: repeat(3, 58px);
+  gap: 10px;
+}
+
+.control-btn {
+  width: 58px;
+  height: 46px;
+  font-size: 1.4rem;
+}
+
+.hint {
+  margin: 14px 0 0;
+  color: var(--text-soft);
+  font-size: 0.9rem;
+}
+
+.calc-display {
+  margin-top: 18px;
+  width: 100%;
+  min-height: 72px;
+  border-radius: var(--radius-md);
+  background: #e6d8c8;
+  padding: 14px;
+  text-align: right;
+  font-size: 2rem;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+.calc-grid {
+  margin-top: 12px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.calc-btn {
+  min-height: 60px;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-size: 1.15rem;
+  font-weight: 800;
+  background: #d8ccbe;
+  color: var(--text-primary);
+  cursor: pointer;
+}
+
+.calc-btn.operator {
+  background: #cbbba8;
+}
+
+.calc-btn.equals {
+  background: #b98b64;
+  color: #fff;
+}
+
+.hidden {
+  display: none;
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 12px;
+  }
+
+  .panel {
+    padding: 16px;
+  }
+}
